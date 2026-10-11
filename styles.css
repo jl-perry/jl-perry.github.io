@@ -1,0 +1,296 @@
+/* ============================================================
+   Jessica Perry — site styles (shared across pages)
+
+   PALETTE — locked variables. To re-skin the site, change the
+   values here only. Every other property reads from these.
+
+     --bg     : background paper (SW Pure White #EDECE6)
+     --ink    : main color (deepened Hague Blue #1E252C)
+     --witch  : Witchcraft #3A4044 — alternate near-black
+     --mid    : medium cool gray-blue, secondary text
+     --soft   : light cool gray-blue, tertiary text
+
+   ALTERNATE WHITES TO SWAP INTO --bg (from Jessica's list):
+     • SW Pure White         #EDECE6   ← current
+     • Behr Palais White
+     • Wimborne White (F&B)
+     • Pointing (F&B)
+     • Cloud White (BM)
+     • Confident White
+     • Delicate White
+     • Joa's White
+   ALTERNATE DARKS TO SWAP INTO --ink:
+     • Hague Blue #2C3437 or #2B343F   ← current is #2B343F
+     • Witchcraft PPG1037-7 #3A4044
+     • Black
+   POSSIBLE SECONDARY COLORS (parked for future use):
+     • Palladian Blue (BM)
+     • SW Dew Drop
+     • Pink Ground (F&B)
+     • BM Tissue Pink
+     • London Stone (F&B)
+   ============================================================ */
+:root{
+  --bg:#EDECE6;
+  --bg-deep:#dfded6;
+  --bg-faint:#f4f3ee;
+  --ink:#1E252C;            /* deepened Hague Blue — main color (13.1:1 on --bg) */
+  --witch:#2C353C;          /* hover color */
+  --mid:#434D57;            /* secondary text (7.3:1 on --bg) */
+  --soft:#58626C;           /* tertiary text (5.3:1 on --bg) */
+  --hairline:rgba(30,37,44,0.20);
+  --rule:rgba(30,37,44,0.60);
+  --accent:var(--ink);      /* accent = main color, unified */
+  --frame:linear-gradient(135deg,#1d2530 0%,#2B343F 55%,#171c24 100%);
+  --serif:"Cormorant Garamond","EB Garamond",Georgia,"Times New Roman",serif;
+  --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{font-size:17px;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
+body{background:var(--bg);color:var(--ink);font-family:var(--serif);font-weight:500;line-height:1.55;text-rendering:optimizeLegibility;min-height:100vh;}
+a{color:inherit;text-decoration:none;}
+a.in-prose{text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:0.5px;}
+a.in-prose:hover{color:var(--witch);}
+img{max-width:100%;display:block;}
+.skip{position:absolute;left:-10000px;top:0;}
+.skip:focus{left:1rem;top:1rem;background:var(--ink);color:var(--bg);padding:0.5rem 1rem;z-index:100;font-family:var(--sans);font-size:12px;}
+.container{max-width:960px;margin:0 auto;padding:0 2rem;}
+
+/* TOPBAR */
+.topbar{border-bottom:0.5px solid var(--ink);padding:1.25rem 0;}
+.topbar .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.topbar .brand{font-family:var(--sans);font-size:11px;letter-spacing:0.36em;text-transform:uppercase;font-weight:500;color:var(--ink);}
+.topbar nav{display:flex;gap:1.75rem;flex-wrap:wrap;}
+.topbar nav a{font-family:var(--sans);font-size:11px;letter-spacing:0.32em;text-transform:uppercase;color:var(--mid);transition:color 0.18s,border-color 0.18s;padding-bottom:3px;border-bottom:0.5px solid transparent;}
+.topbar nav a:hover{color:var(--ink);}
+.topbar nav a.active{color:var(--ink);border-bottom-color:var(--ink);}
+.topbar .vol{font-family:var(--serif);font-style:italic;font-size:14px;color:var(--mid);}
+
+/* HERO */
+.hero{padding:6.5rem 0 4.5rem;}
+.hero-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:5rem;align-items:end;}
+.eyebrow{font-family:var(--sans);font-size:11px;letter-spacing:0.36em;text-transform:uppercase;color:var(--ink);margin-bottom:2.25rem;font-weight:500;}
+.hero h1{font-family:var(--serif);font-weight:400;line-height:0.95;letter-spacing:-0.018em;font-size:clamp(64px,9.5vw,108px);color:var(--ink);}
+.hero h1 span{display:block;}
+.hero .tagline{font-family:var(--serif);font-style:italic;font-size:20px;line-height:1.45;color:var(--mid);margin-top:2rem;max-width:460px;}
+.tagline-note{font-family:var(--sans);font-size:10px;letter-spacing:0.24em;text-transform:uppercase;color:var(--soft);margin-top:0.5rem;}
+.portrait-wrap{display:flex;flex-direction:column;align-items:stretch;}
+.portrait{background:var(--frame);border-radius:1px;display:flex;align-items:flex-end;box-shadow:inset 0 0 0 0.5px rgba(20,28,40,0.55);position:relative;overflow:hidden;}
+.portrait::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 30% 25%,rgba(220,230,245,0.06),transparent 60%);pointer-events:none;}
+.portrait span{font-family:var(--sans);font-size:9px;letter-spacing:0.36em;text-transform:uppercase;color:#a8b1bd;position:relative;z-index:1;}
+.portrait img{width:100%;height:auto;display:block;}
+.portrait-caption{font-family:var(--serif);font-style:italic;font-size:13px;color:var(--mid);margin-top:0.85rem;text-align:right;}
+
+/* PAGE HEAD (interior pages) */
+.page-head{padding:4.5rem 0 2.5rem;}
+.page-head .kicker{font-family:var(--sans);font-size:11px;letter-spacing:0.36em;text-transform:uppercase;color:var(--ink);margin-bottom:1.25rem;font-weight:500;}
+.page-head h1,.page-head h2{font-family:var(--serif);font-weight:400;font-size:clamp(48px,7vw,80px);letter-spacing:-0.012em;line-height:1;color:var(--ink);}
+
+.page-lede{font-family:var(--serif);font-size:19px;line-height:1.6;color:var(--ink);max-width:680px;margin-top:1.5rem;}
+
+/* SECTIONS */
+.section{padding:3.5rem 0 4.5rem;border-top:0.5px solid var(--hairline);}
+.section.first{border-top:none;padding-top:0.5rem;}
+.section-head{display:flex;align-items:center;gap:0.85rem;margin-bottom:2.5rem;}
+.section-head .label{font-family:var(--sans);font-size:11px;letter-spacing:0.36em;text-transform:uppercase;color:var(--ink);font-weight:500;}
+.section-head .rule{flex:1;height:0.5px;background:var(--rule);margin-left:0.25rem;}
+.section-head .index{font-family:var(--serif);font-style:italic;font-size:14px;color:var(--mid);}
+
+/* ORNAMENT — one figure from Euclid's Elements per page (I.1, I.47, III.31,
+   IV.15, after I.10, IV.6). The SVG uses currentColor, so this CSS color
+   controls the mark. Strokes are fixed in pixels so they stay legible at
+   section-head size and at footer size. */
+.ornament{
+  display:inline-flex;
+  align-items:center;
+  height:28px;
+  color:var(--ink);
+  line-height:0;
+  vertical-align:middle;
+  flex-shrink:0;
+}
+.ornament svg{display:block;height:100%;width:auto;overflow:visible;}
+.ornament svg *{vector-effect:non-scaling-stroke;stroke-width:1.2px;}
+.ornament-lg{height:52px;}
+.ornament-lg svg *{stroke-width:1.5px;}
+
+/* MARK COLORING — figures drawn in the manner of Oliver Byrne's 1847 Elements
+   (flat fills, thin colored lines), in four color roles chosen for this site.
+   Change the four values below to recolor every mark. */
+.ornament{--m1:#1B2D52;--m2:#9FB8DB;--m3:#2A64A8;--m4:var(--ink);}
+.ornament .f1{fill:var(--m1);} .ornament .f2{fill:var(--m2);} .ornament .f3{fill:var(--m3);} .ornament .f4{fill:var(--m4);}
+.ornament .s1{stroke:var(--m1);} .ornament .s2{stroke:var(--m2);} .ornament .s3{stroke:var(--m3);} .ornament .s4{stroke:var(--m4);}
+
+
+/* CURRENTLY (landing) */
+.currently{padding:5rem 0;border-top:0.5px solid var(--hairline);}
+.currently-inner{max-width:640px;margin:0 auto;text-align:center;}
+.currently .label{font-family:var(--sans);font-size:11px;letter-spacing:0.36em;text-transform:uppercase;color:var(--ink);font-weight:500;margin-bottom:1.75rem;display:inline-flex;align-items:center;justify-content:center;gap:0.8rem;}
+.currently p{font-family:var(--serif);font-size:22px;line-height:1.5;color:var(--ink);}
+.currently p em{font-style:italic;}
+
+/* SELECTED WORK */
+.work-entry{display:grid;grid-template-columns:148px 1fr;gap:2.5rem;padding:2.5rem 0;border-bottom:0.5px solid var(--hairline);}
+.work-entry:last-child{border-bottom:none;}
+.work-meta{display:flex;flex-direction:column;gap:0.4rem;}
+.work-num{font-family:var(--sans);font-size:11px;letter-spacing:0.24em;color:var(--soft);font-weight:500;}
+.work-year{font-family:var(--serif);font-style:italic;font-size:34px;line-height:1;color:var(--ink);margin-top:0.35rem;}
+.work-journal{font-family:var(--serif);font-style:italic;font-size:15px;color:var(--mid);margin-top:0.75rem;}
+.work-status{font-family:var(--sans);font-size:10px;letter-spacing:0.24em;text-transform:uppercase;color:var(--soft);margin-top:0.35rem;}
+.work-body h3{font-family:var(--serif);font-size:25px;font-weight:600;line-height:1.22;margin-bottom:0.7rem;color:var(--ink);}
+.work-body h3 em{font-style:italic;}
+.work-body .role{font-family:var(--sans);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--mid);margin-bottom:1rem;font-weight:500;}
+.work-body p{font-family:var(--serif);font-size:17.5px;line-height:1.6;color:var(--ink);}
+.work-body .link{display:inline-block;margin-top:1.1rem;font-family:var(--sans);font-size:11px;letter-spacing:0.24em;text-transform:uppercase;color:var(--ink);font-weight:500;border-bottom:0.5px solid var(--ink);padding-bottom:2px;}
+.work-body .link:hover{color:var(--witch);border-color:var(--witch);}
+
+/* PUBLICATION LIST (full) */
+.pub-list{margin-top:1rem;}
+.pub-item{display:grid;grid-template-columns:78px 1fr;gap:1.5rem;padding:1.4rem 0;border-bottom:0.5px solid var(--hairline);align-items:baseline;}
+.pub-item:last-child{border-bottom:none;}
+.pub-year{font-family:var(--serif);font-style:italic;font-size:18px;color:var(--mid);}
+.pub-detail .title{font-family:var(--serif);font-size:17.5px;font-weight:600;line-height:1.42;color:var(--ink);margin-bottom:0.35rem;}
+.pub-detail .meta{font-family:var(--serif);font-style:italic;font-size:15.5px;color:var(--mid);}
+.pub-detail .authors{font-family:var(--sans);font-size:12px;letter-spacing:0.03em;color:var(--mid);margin-top:0.3rem;line-height:1.5;}
+
+/* PATENT BOX */
+.patent{margin-top:2.5rem;padding:1.5rem 1.75rem;border:0.5px solid var(--rule);background:var(--bg-faint);}
+.patent .smallcaps{font-family:var(--sans);font-size:11px;letter-spacing:0.32em;text-transform:uppercase;color:var(--ink);font-weight:500;display:block;margin-bottom:0.5rem;}
+.patent .title{font-family:var(--serif);font-style:italic;font-size:18px;line-height:1.4;color:var(--ink);}
+.patent .meta{font-family:var(--serif);font-style:italic;font-size:14px;color:var(--mid);margin-top:0.25rem;}
+
+/* ABOUT essay (factual, plain) */
+.about-essay{max-width:680px;}
+.about-essay p{font-family:var(--serif);font-size:19px;line-height:1.65;color:var(--ink);}
+.about-essay p+p{margin-top:1.1rem;}
+
+/* EDUCATION + EXPERIENCE blocks */
+.cv-list{margin-top:1rem;}
+.cv-item{display:grid;grid-template-columns:160px 1fr;gap:2rem;padding:1.3rem 0;border-bottom:0.5px solid var(--hairline);align-items:baseline;}
+.cv-item:last-child{border-bottom:none;}
+.cv-date{font-family:var(--serif);font-style:italic;font-size:16px;color:var(--mid);}
+.cv-body .h{font-family:var(--serif);font-size:19px;font-weight:600;line-height:1.3;color:var(--ink);}
+.cv-body .h em{font-style:italic;}
+.cv-body .sub{font-family:var(--serif);font-style:italic;font-size:16.5px;color:var(--mid);margin-top:0.2rem;}
+.cv-body .notes{font-family:var(--serif);font-size:16.5px;color:var(--ink);margin-top:0.6rem;line-height:1.55;}
+.cv-body ul{margin-top:0.6rem;padding-left:1.1rem;}
+.cv-body ul li{font-family:var(--serif);font-size:16.5px;line-height:1.55;color:var(--ink);margin-bottom:0.3rem;}
+.cv-body ul li::marker{color:var(--soft);}
+
+/* HONORS — simple two-col */
+.honors-list{margin-top:1rem;}
+.honor-item{display:grid;grid-template-columns:1fr auto;gap:1.5rem;padding:0.85rem 0;border-bottom:0.5px solid var(--hairline);align-items:baseline;}
+.honor-item:last-child{border-bottom:none;}
+.honor-name{font-family:var(--serif);font-size:17px;color:var(--ink);}
+.honor-name .where{font-style:italic;color:var(--mid);}
+.honor-year{font-family:var(--serif);font-style:italic;font-size:16px;color:var(--mid);}
+
+/* CONTACT */
+.contact{padding:4rem 0;border-top:0.5px solid var(--hairline);}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;max-width:680px;}
+.contact-block .smallcaps{font-family:var(--sans);font-size:11px;letter-spacing:0.32em;text-transform:uppercase;color:var(--ink);font-weight:500;display:block;margin-bottom:0.6rem;}
+.contact-block p{font-family:var(--serif);font-size:19px;line-height:1.5;color:var(--ink);}
+.contact-block a{color:var(--ink);transition:color 0.18s;}
+.contact-block a:hover{color:var(--witch);}
+
+/* CONTINUE link (foot of page) */
+.continue{padding:3rem 0;border-top:0.5px solid var(--hairline);text-align:center;}
+.continue p{font-family:var(--serif);font-style:italic;font-size:16px;color:var(--mid);}
+.continue a{color:var(--ink);font-style:normal;font-family:var(--sans);font-size:11px;letter-spacing:0.32em;text-transform:uppercase;font-weight:500;margin-left:0.6rem;border-bottom:0.5px solid var(--ink);padding-bottom:2px;}
+.continue a:hover{color:var(--witch);border-color:var(--witch);}
+
+/* PROJECT visuals — hero image + matplotlib figure strip */
+.project-hero{margin:1.5rem 0;background:#fff;border:0.5px solid var(--hairline);}
+.project-hero a{display:block;}
+.project-hero img{width:100%;display:block;}
+.project-hero-caption{font-family:var(--serif);font-style:italic;font-size:14px;color:var(--mid);margin-top:0.6rem;text-align:right;}
+.figure-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:0.85rem;margin:1.5rem 0 1rem;}
+.figure-strip .fig{display:flex;flex-direction:column;gap:0.4rem;}
+.figure-strip .fig a{display:block;background:#fff;border:0.5px solid var(--hairline);aspect-ratio:4/3;overflow:hidden;transition:transform 0.18s,box-shadow 0.18s;}
+.figure-strip .fig a:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(43,52,63,0.12);}
+.figure-strip .fig img{width:100%;height:100%;object-fit:contain;display:block;}
+.figure-strip .fig-caption{font-family:var(--sans);font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--soft);font-weight:500;text-align:center;}
+
+/* TALKS — listing of presentations (no slide gallery on listing items) */
+.talk-listing{margin-top:1rem;}
+.talk-line{display:grid;grid-template-columns:140px 1fr auto;gap:1.5rem;padding:1.4rem 0;border-bottom:0.5px solid var(--hairline);align-items:baseline;}
+.talk-line:last-child{border-bottom:none;}
+.talk-line .when{font-family:var(--serif);font-style:italic;font-size:16px;color:var(--mid);}
+.talk-line .what .ttl{font-family:var(--serif);font-size:18px;font-weight:600;line-height:1.35;color:var(--ink);}
+.talk-line .what .where{font-family:var(--serif);font-style:italic;font-size:16px;color:var(--mid);margin-top:0.2rem;}
+.talk-line .slides-link{font-family:var(--sans);font-size:10px;letter-spacing:0.24em;text-transform:uppercase;color:var(--ink);font-weight:500;border-bottom:0.5px solid var(--ink);padding-bottom:1px;}
+.talk-line .slides-link:hover{color:var(--witch);border-color:var(--witch);}
+
+/* TALKS — single talk entry + slide gallery (kept for Sparse Clustering on Work) */
+.talk-entry{padding:2.5rem 0;border-bottom:0.5px solid var(--hairline);}
+.talk-entry:last-of-type{border-bottom:none;}
+.talk-header{display:grid;grid-template-columns:160px 1fr;gap:2rem;align-items:baseline;}
+.talk-meta{display:flex;flex-direction:column;gap:0.4rem;}
+.talk-num{font-family:var(--sans);font-size:11px;letter-spacing:0.24em;color:var(--soft);font-weight:500;}
+.talk-date{font-family:var(--serif);font-style:italic;font-size:22px;color:var(--ink);}
+.talk-venue{font-family:var(--serif);font-style:italic;font-size:14px;color:var(--mid);}
+.talk-body h3{font-family:var(--serif);font-size:26px;font-weight:600;line-height:1.22;margin-bottom:0.6rem;color:var(--ink);}
+.talk-body .context{font-family:var(--sans);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--soft);margin-bottom:1rem;font-weight:500;}
+.talk-body p{font-family:var(--serif);font-size:17.5px;line-height:1.6;color:var(--ink);}
+.talk-body .talk-link{display:inline-block;margin-top:1.1rem;font-family:var(--sans);font-size:11px;letter-spacing:0.24em;text-transform:uppercase;color:var(--ink);font-weight:500;border-bottom:0.5px solid var(--ink);padding-bottom:2px;}
+.talk-body .talk-link+.talk-link{margin-left:1.5rem;}
+.talk-body .talk-link:hover{color:var(--witch);border-color:var(--witch);}
+
+.deck-gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem 1.25rem;margin-top:2rem;}
+.deck-slide-wrap{display:flex;flex-direction:column;gap:0.5rem;}
+.deck-slide{display:block;background:#fff;border:0.5px solid var(--hairline);aspect-ratio:16/9;overflow:hidden;transition:transform 0.2s ease,box-shadow 0.2s ease;}
+.deck-slide img{width:100%;height:100%;object-fit:contain;display:block;}
+.deck-slide:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(43,52,63,0.14);}
+.slide-caption{font-family:var(--sans);font-size:10px;letter-spacing:0.24em;text-transform:uppercase;color:var(--mid);font-weight:500;}
+.deck-note{font-family:var(--serif);font-style:italic;font-size:14px;color:var(--mid);margin-top:1rem;text-align:right;}
+
+.talk-placeholder{padding:3rem 0;text-align:center;}
+.talk-placeholder p{font-family:var(--serif);font-style:italic;font-size:16px;color:var(--mid);}
+
+/* FOOTER */
+.colophon{padding:3rem 0 4rem;border-top:0.5px solid var(--ink);text-align:center;}
+.colophon .ornament{margin-bottom:1rem;}
+.colophon p{font-family:var(--serif);font-style:italic;font-size:14.5px;line-height:1.6;color:var(--mid);}
+
+/* RESPONSIVE */
+@media (max-width:760px){
+  .hero{padding:3rem 0 2.5rem;}
+  .hero-grid{grid-template-columns:1fr;gap:2.5rem;}
+  .portrait-wrap{max-width:300px;}
+  .topbar .container{justify-content:flex-start;gap:1rem;}
+  .topbar nav{gap:1.25rem;}
+  .topbar .vol{display:none;}
+  .section,.currently,.contact,.continue,.page-head{padding:2.5rem 0;}
+  .currently p{font-size:19px;}
+  .work-entry{grid-template-columns:1fr;gap:0.5rem;padding:1.75rem 0;}
+  .work-meta{flex-direction:row;align-items:baseline;gap:1rem;flex-wrap:wrap;}
+  .work-year{font-size:24px;margin-top:0;}
+  .work-journal{margin-top:0;}
+  .contact-grid{grid-template-columns:1fr;}
+  .container{padding:0 1.5rem;}
+  .pub-item,.cv-item{grid-template-columns:1fr;gap:0.35rem;}
+  .honor-item{grid-template-columns:1fr;gap:0.2rem;}
+  .talk-header{grid-template-columns:1fr;gap:0.4rem;}
+  .deck-gallery{grid-template-columns:1fr;gap:0.9rem;}
+  .figure-strip{grid-template-columns:repeat(2,1fr);}
+  .talk-line{grid-template-columns:1fr;gap:0.3rem;}
+  .talk-line .slides-link{justify-self:start;margin-top:0.4rem;}
+}
+@media print{
+  body{background:#fff;}
+  .topbar,.colophon,.portrait-wrap,.continue{display:none;}
+  .section,.currently,.contact,.page-head{padding:1.25rem 0;break-inside:avoid;}
+}
+
+/* Additions: grouping, contact note, accessibility */
+.pub-group{font-family:var(--sans);font-size:11px;letter-spacing:0.28em;text-transform:uppercase;color:var(--mid);font-weight:500;margin:2.25rem 0 0.25rem;}
+.pub-list > .pub-group:first-child{margin-top:0.5rem;}
+.contact-note{font-family:var(--serif);font-style:italic;font-size:16px !important;line-height:1.5;color:var(--mid);margin-top:0.6rem;max-width:34ch;}
+a:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:1px;}
+@media (prefers-reduced-motion:reduce){*{transition:none !important;animation:none !important;}}
+
+/* Page mark shown at the top of each page */
+.ornament.ornament-head{height:64px;margin-bottom:1.75rem;}
+.ornament-head svg *{stroke-width:1.6px;}
+.hero .ornament-head{margin-bottom:2rem;}
+@media (max-width:760px){.ornament.ornament-head{height:48px;margin-bottom:1.25rem;}}
